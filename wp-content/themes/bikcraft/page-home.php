@@ -3,6 +3,8 @@
 get_header();
 ?>
 
+<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+
 <section class="introducao">
   <div class="container">
     <h1>Bicicletas Feitas a Mão</h1>
@@ -20,7 +22,7 @@ get_header();
 
     <li class="grid-1-3">
       <div class="produtos_icone">
-        <img src="<?= get_stylesheet_directory_uri() ?>/img/produtos/passeio.png" alt="Bikcraft Passeio">
+        <img src="<?= get_template_directory_uri() ?>/img/produtos/passeio.png" alt="Bikcraft Passeio">
       </div>
       <h3>Passeio</h3>
       <p>Muito melhor do que passear pela orla a vidros fechados.</p>
@@ -28,7 +30,7 @@ get_header();
 
     <li class="grid-1-3">
       <div class="produtos_icone">
-        <img src="<?= get_stylesheet_directory_uri() ?>/img/produtos/esporte.png" alt="Bikcraft Esporte">
+        <img src="<?= get_template_directory_uri() ?>/img/produtos/esporte.png" alt="Bikcraft Esporte">
       </div>
       <h3>Esporte</h3>
       <p>Mais rápida do que Forrest Gump, ninguém vai pegar você.</p>
@@ -36,7 +38,7 @@ get_header();
 
     <li class="grid-1-3">
       <div class="produtos_icone">
-        <img src="<?= get_stylesheet_directory_uri() ?>/img/produtos/retro.png" alt="Bikcraft Retrô">
+        <img src="<?= get_template_directory_uri() ?>/img/produtos/retro.png" alt="Bikcraft Retrô">
       </div>
       <h3>Retrô</h3>
       <p>O passado volta para lembrarmos o que devemos fazer no futuro.</p>
@@ -56,11 +58,11 @@ get_header();
   <div class="container">
     <h2 class="subtitulo">Portfólio</h2>
     <div class="portfolio_lista">
-      <div class="grid-8"><img src="<?= get_stylesheet_directory_uri() ?>/img/portfolio/retro.jpg"
-          alt="Bicicleta Retrô"></div>
-      <div class="grid-8"><img src="<?= get_stylesheet_directory_uri() ?>/img/portfolio/passeio.jpg"
+      <div class="grid-8"><img src="<?= get_template_directory_uri() ?>/img/portfolio/retro.jpg" alt="Bicicleta Retrô">
+      </div>
+      <div class="grid-8"><img src="<?= get_template_directory_uri() ?>/img/portfolio/passeio.jpg"
           alt="Bicicleta Passeio"></div>
-      <div class="grid-16"><img src="<?= get_stylesheet_directory_uri() ?>/img/portfolio/esporte.jpg"
+      <div class="grid-16"><img src="<?= get_template_directory_uri() ?>/img/portfolio/esporte.jpg"
           alt="Bicicleta Esporte"></div>
     </div>
     <div class="call">
@@ -72,7 +74,7 @@ get_header();
 
 <section class="qualidade container">
   <h2 class="subtitulo">Qualidade</h2>
-  <img src="<?= get_stylesheet_directory_uri() ?>/img/bikcraft-qualidade.png" alt="Bikcraft">
+  <img src="<?= get_template_directory_uri() ?>/img/bikcraft-qualidade.png" alt="Bikcraft">
   <ul class="qualidade_lista">
     <li class="grid-1-3">
       <h3>Durabilidade</h3>
@@ -92,5 +94,8 @@ get_header();
     <a href="sobre.html" class="btn btn-preto">Sobre</a>
   </div>
 </section>
+
+<?php endwhile;
+endif; ?>
 
 <?php get_footer(); ?>

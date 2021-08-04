@@ -3,12 +3,9 @@
 get_header();
 ?>
 
-<section class="introducao-interna interna_sobre">
-  <div class="container">
-    <h1>Sobre</h1>
-    <p>conheça mais sobre a bikcraft</p>
-  </div>
-</section>
+<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+
+<?php include(TEMPLATEPATH . '/includes/introducao.php') ?>
 
 <section class="missao_sobre container animar-interno">
   <div class="grid-10">
@@ -29,14 +26,14 @@ get_header();
   </div>
 
   <div class="grid-16 foto-equipe">
-    <img src="img/equipe-bikcraft.jpg" alt="Equipe Bikcraft">
+    <img src="<?= get_template_directory_uri() ?>/img/equipe-bikcraft.jpg" alt="Equipe Bikcraft">
   </div>
 
 </section>
 
 <section class="qualidade container">
   <h2 class="subtitulo">Qualidade</h2>
-  <img src="img/bikcraft-qualidade.png" alt="Bikcraft">
+  <img src="<?= get_template_directory_uri() ?>/img/bikcraft-qualidade.png" alt="Bikcraft">
   <ul class="qualidade_lista">
     <li class="grid-1-3">
       <h3>Durabilidade</h3>
@@ -52,5 +49,8 @@ get_header();
     </li>
   </ul>
 </section>
+
+<?php endwhile;
+endif; ?>
 
 <?php get_footer(); ?>
