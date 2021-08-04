@@ -3,12 +3,12 @@
 
 <head>
   <meta charset="utf-8">
-  <title><?php bloginfo('name'); ?></title>
+  <title><?php bloginfo('name'); ?> - <?php bloginfo('description'); ?></title>
   <meta name="description"
     content="Compre a sua bicicleta personalizada na Bikcraft. Possuímos modelos Passeio, Retrô e Esporte.">
 
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="<?php bloginfo('name'); ?>" />
+  <meta property="og:title" content="<?php bloginfo('name'); ?> - <?php bloginfo('description'); ?>" />
   <meta property="og:description"
     content="Compre a sua bicicleta personalizada na Bikcraft. Possuímos modelos Passeio, Retrô e Esporte." />
   <meta property="og:url" content="http://bikcraft.com" />
@@ -26,15 +26,15 @@
 
   <header class="header">
     <div class="container">
-      <a href="index.html" class="grid-4">
+      <a href="/" class="grid-4">
         <img src="<?= get_stylesheet_directory_uri() ?>/img/bikcraft.png" alt="Bikcraft">
       </a>
       <nav class="grid-12 header_menu">
         <ul>
-          <li><a href="sobre.html">Sobre</a></li>
-          <li><a href="produtos.html">Produtos</a></li>
-          <li><a href="portfolio.html">Portfólio</a></li>
-          <li><a href="contato.html">Contato</a></li>
+          <li><a href="/bikcraft/sobre/">Sobre</a></li>
+          <li><a href="/bikcraft/produtos/">Produtos</a></li>
+          <li><a href="/bikcraft/portfolio/">Portfólio</a></li>
+          <li><a href="/bikcraft/contato/">Contato</a></li>
         </ul>
       </nav>
     </div>
