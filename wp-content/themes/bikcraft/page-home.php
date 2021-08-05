@@ -1,18 +1,38 @@
 <?php
 // Template Name: Home
 get_header();
+
+// Mostrar imagens de tamanhos diferentes
+$img_id = get_field('background_home_id'); //o sufixo '_id' traz o id da img ao invés do caminho
+$bg_medium = wp_get_attachment_image_src($img_id, 'medium')[0];
+$bg_large  = wp_get_attachment_image_src($img_id, 'large')[0];
 ?>
+
+<style>
+.introducao {
+  background: url('<?= $bg_large ?>') no-repeat center;
+  background-size: cover;
+}
+
+/*Estilo para smartphone*/
+@media only screen and (max-width: 767px) {
+  .introducao {
+    background: url('<?= $bg_medium ?>') no-repeat center;
+    background-size: cover;
+  }
+}
+</style>
 
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
 <section class="introducao">
   <div class="container">
-    <h1>Bicicletas Feitas a Mão</h1>
+    <h1><?= get_field('titulo_intro') ?></h1>
     <blockquote class="quote-externo">
-      <p>“não tenha nada em sua casa que você não considere útil ou acredita ser bonito”</p>
-      <cite>WILLIAM MORRIS</cite>
+      <p><?= get_field('quote_intro') ?></p>
+      <cite><?= get_field('citacao_intro') ?></cite>
     </blockquote>
-    <a href="produtos.html" class="btn">Orçamento</a>
+    <a href="/bikcraft/produtos" class=" btn">Orçamento</a>
   </div>
 </section>
 
@@ -47,53 +67,21 @@ get_header();
   </ul>
 
   <div class="call">
-    <p>clique aqui e veja os detalhes dos produtos</p>
-    <a href="produtos.html" class="btn btn-preto">Produtos</a>
+    <p><?= get_field('home_produtos') ?></p>
+    <a href="/bikcraft/produtos/" class="btn btn-preto">Produtos</a>
   </div>
 
 </section>
 <!-- Fecha Produtos -->
 
-<section class="portfolio">
-  <div class="container">
-    <h2 class="subtitulo">Portfólio</h2>
-    <div class="portfolio_lista">
-      <div class="grid-8"><img src="<?= get_template_directory_uri() ?>/img/portfolio/retro.jpg" alt="Bicicleta Retrô">
-      </div>
-      <div class="grid-8"><img src="<?= get_template_directory_uri() ?>/img/portfolio/passeio.jpg"
-          alt="Bicicleta Passeio"></div>
-      <div class="grid-16"><img src="<?= get_template_directory_uri() ?>/img/portfolio/esporte.jpg"
-          alt="Bicicleta Esporte"></div>
-    </div>
-    <div class="call">
-      <p>conheça mais o nosso portfólio</p>
-      <a href="portfolio.html" class="btn">Portfólio</a>
-    </div>
-  </div>
-</section>
 
-<section class="qualidade container">
-  <h2 class="subtitulo">Qualidade</h2>
-  <img src="<?= get_template_directory_uri() ?>/img/bikcraft-qualidade.png" alt="Bikcraft">
-  <ul class="qualidade_lista">
-    <li class="grid-1-3">
-      <h3>Durabilidade</h3>
-      <p>Sólida como pedra, leve como o vento e resistente como o diamante, são nossos diferenciais.</p>
-    </li>
-    <li class="grid-1-3">
-      <h3>Design</h3>
-      <p>Feitas sob medida para o melhor conforto e eficiência. Adaptamos a sua Bikcraft para o seu corpo.</p>
-    </li>
-    <li class="grid-1-3">
-      <h3>Sustentabilidade</h3>
-      <p>Além de ajudar a cuidar do meio ambiente, tirando carros da rua, toda a produção é sustentável.</p>
-    </li>
-  </ul>
-  <div class="call">
-    <p>conheça mais a nossa história</p>
-    <a href="sobre.html" class="btn btn-preto">Sobre</a>
-  </div>
-</section>
+<!-- Inicio Portfolio -->
+<?php include(TEMPLATEPATH . '/includes/portfolio.php') ?>
+<!-- Fecha Portfolio -->
+
+<!-- Fecha Qualidade -->
+<?php include(TEMPLATEPATH . '/includes/qualidade.php') ?>
+<!-- Fecha Qualidade -->
 
 <?php endwhile;
 endif; ?>
